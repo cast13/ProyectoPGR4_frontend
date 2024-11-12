@@ -1,24 +1,51 @@
 import streamlit as st
-from pages.clientes import mostrar_clientes  # Importa la función para clientes
-from pages.productos import mostrar_productos  # Importa la función para productos
+from pages.clientes import mostrar_clientes  # Importa la función para mostrar clientes
+from pages.productos import mostrar_productos  # Importa la función para mostrar productos
 
-# Cambiar el fondo de la página usando CSS
+# ... rest of your app.py code ...
+# ... rest of your app.py code ...
+
+# Cambiar el fondo de la página y la fuente usando CSS
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
     .reportview-container {
-        background: url('https://image.freepik.com/vector-gratis/fondo-de-tienda-en-linea_1302-806.jpg');  /* Cambia la URL por la de tu imagen de fondo */
+        background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJhY2tncm91bmR8ZW58MHx8fHwxNjYyMjY0MjY0&ixlib=rb-1.2.1&q=80&w=1080');  /* Nueva imagen de fondo */
         background-size: cover;
+        background-position: center;
+        font-family: 'Open Sans', sans-serif;  /* Cambia la fuente a Open Sans */
+    }
+
+    /* Estilo para la barra de navegación */
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.8);  /* Fondo blanco con transparencia */
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Estilo para los títulos */
+    h1 {
+        font-size: 5em;  /* Tamaño de letra más grande para h1 */
+    }
+
+    h2 {
+        font-size: 2em;  /* Tamaño de letra más grande para h2 */
+    }
+
+    h3 {
+        font-size: 1.5em;  /* Tamaño de letra más grande para h3 */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
-st.title("Gestión de Tienda Virtual")
+st.title("Tienda Virtual")
 
 # Menú de navegación
-st.sidebar.title("Navegación")
+st.sidebar.title("MENU")
 opcion = st.sidebar.selectbox("Selecciona una opción:", ["Inicio", "Gestionar Clientes", "Gestionar Productos", "Gestionar Pedidos"])
 
 if opcion == "Inicio":
