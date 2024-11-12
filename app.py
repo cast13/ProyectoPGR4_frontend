@@ -1,9 +1,7 @@
 import streamlit as st
 from pages.clientes import mostrar_clientes  # Importa la función para mostrar clientes
 from pages.productos import mostrar_productos  # Importa la función para mostrar productos
-
-# ... rest of your app.py code ...
-# ... rest of your app.py code ...
+from pages.pedidos import ver_pedidos  # Importa la función para ver pedidos
 
 # Cambiar el fondo de la página y la fuente usando CSS
 st.markdown(
@@ -51,7 +49,13 @@ opcion = st.sidebar.selectbox("Selecciona una opción:", ["Inicio", "Gestionar C
 if opcion == "Inicio":
     st.markdown("""
     ## Bienvenido a la Tienda Virtual
-    En nuestra tienda virtual, puedes gestionar clientes, productos y pedidos de manera eficiente y sencilla. 
+    
+    Nuestra tienda virtual está diseñada específicamente para empresas dedicadas a sistemas de drywall, ofreciendo una plataforma eficiente para la gestión de clientes, productos y pedidos. Esta herramienta permite automatizar y centralizar el proceso de ventas, facilitando la experiencia tanto para la empresa como para sus clientes.
+
+    Los clientes pueden navegar y comprar una amplia gama de productos esenciales para la construcción en drywall: placas de yeso, perfiles de acero, herramientas especializadas, accesorios de instalación, entre otros. La plataforma incluye detalles de inventario en tiempo real, opciones de pago seguras y seguimiento de pedidos.
+
+    Además, el sistema ayuda a la empresa a gestionar fácilmente los datos de sus clientes, desde el historial de compras hasta las preferencias de productos, lo que permite ofrecer recomendaciones personalizadas y promociones exclusivas. Con esta herramienta, se busca optimizar el flujo de trabajo en la cadena de suministro y aumentar la satisfacción del cliente a través de un proceso de compra ágil y moderno. 
+    
     Utiliza el menú de navegación para acceder a las diferentes secciones de la aplicación.
     """)
     
@@ -68,5 +72,4 @@ elif opcion == "Gestionar Clientes":
 elif opcion == "Gestionar Productos":
     mostrar_productos()  # Llama a la función para mostrar productos
 elif opcion == "Gestionar Pedidos":
-    st.write("Aquí puedes gestionar los pedidos.")
-    # Aquí puedes agregar más funcionalidades para gestionar pedidos
+    ver_pedidos()  # Llama a la función para ver pedidos

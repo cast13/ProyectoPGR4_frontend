@@ -75,7 +75,7 @@ def eliminar_cliente():
         # Send a DELETE request to remove the client
         response = requests.delete(f"http://127.0.0.1:8000/clientes/{cliente_id}")
         
-        if response.status_code == 204:  # Assuming 204 is the success status code for deletion
+        if response.status_code == 200:  # Assuming 204 is the success status code for deletion
             st.success(f"Cliente {cliente_id} eliminado.")
         else:
             st.error("Error al eliminar el cliente. Cliente no encontrado o error en el servidor.")
@@ -107,11 +107,25 @@ def ver_cliente():
         else:
             st.error("Cliente no encontrado.")
 
+def ver_cantidad_pedidos():
+    st.header("Cantidad de Pedidos del Cliente")
+    cliente_id = st.text_input("ID del Cliente")
+
+    if st.button("Ver Cantidad de Pedidos"):
+        # Send a GET request to fetch the number of orders for the client
+        response = requests.get(f"http://127.0.0.1:8000/clientes/{cliente_id}/cantidad_pedidos")
+        
+        if response.status_code == 200:
+            cantidad_pedidos = response.json()  # Assuming the response is just an integer
+            st.write(f"El cliente con ID {cliente_id} ha realizado {cantidad_pedidos} pedidos.")
+        else:
+            st.error("Error al obtener la cantidad de pedidos. Cliente no encontrado.")
+
 # Main function to handle the page
 def main():
     st.title("Gestión de Clientes")
     opcion = st.selectbox("Selecciona una opción:", 
-                          ["Crear Cliente", "Editar Cliente", "Eliminar Cliente", "Ver Cliente", "Mostrar Clientes"])
+                          ["Crear Cliente", "Editar Cliente", "Eliminar Cliente", "Ver Cliente", "Mostrar Clientes", "Ver Cantidad de Pedidos"])
 
     if opcion == "Crear Cliente":
         crear_cliente()
@@ -123,6 +137,8 @@ def main():
         ver_cliente()  # Call the function to view a client
     elif opcion == "Mostrar Clientes":
         mostrar_clientes()  # Call the function to display clients
+    elif opcion == "Ver Cantidad de Pedidos":
+        ver_cantidad_pedidos()  # Call the function to view the number of orders
 
 if __name__ == "__main__":
     main()
