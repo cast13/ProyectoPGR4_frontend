@@ -22,4 +22,4 @@ def mostrar_productos():
         else:
             st.write("No se encontraron productos.")
     else:
-        st.write("Error al obtener los productos.") 
+        st.write("Error al obtener los productos.")
